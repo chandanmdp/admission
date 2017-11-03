@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="text-center bg-info">Eligibility Criterias For Admission</h2>
+  <% if @eligibilities.size %>
+    <% @eligibilities.each do |eligibility| %>
+      <table class="table">
+        <tr>
+          <th class="text-center"><%= eligibility.title %></th>
+        </tr>
+        <tr>
+          <td class="text-center col-sm-9"><%= eligibility.criteria %></td>
+          <% if logged_in? %>
+            <% if current_user.admin? %>
+              <td class="text-center col-sm-3">
+                <%= link_to("Edit criteria", edit_eligibility_path(eligibility), class:'btn btn-info btn-sm') %>
+                <%= link_to 'Destroy criteria', eligibility_path(eligibility), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-info btn-sm' %>
+              </td>
+            <% end %>
+          <% end %>
+        </tr>
+      </table>
+    <% end %>
+  <% end %>
+  <% if logged_in? %>
+    <% if current_user.admin? %>
+      <%= link_to("Add New Eligibility Criteria", new_eligibility_path, class:'btn btn-info') %>
+    <% end %>
+  <% end %>
+</div>

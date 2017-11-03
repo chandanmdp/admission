@@ -1,0 +1,7 @@
+<div class="container">
+  <h2 class="text-center bg-info">Create Section</h2>
+  <%= form_for @section do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= f.submit "Create Section", class: "btn btn-info" %>
+  <% end %>
+</div>

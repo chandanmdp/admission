@@ -1,0 +1,24 @@
+<div class="container">
+  <h2 class="text-center bg-info">Appointment Details </h2>
+  <% if @candidate.appointment.present? %>
+    <% if @candidate.appointment.datetime > Time.now %>
+      <div class="col-sm-6 col-sm-offset-3 bg-gray">
+        <h4>The application of <%= @candidate.name %> is accepted. Be present at the below specified venue with all the documents on
+          <%= @candidate.appointment.datetime.to_s(:long) %> .
+        </h4><br>
+        <h4>Venue:</h4>
+        <p><%= @candidate.appointment.venue %></p>
+      </div>
+    <% else %>
+      <div>
+        <br>
+        <h4>No appointment present for <%= @candidate.name %></h4>
+      </div>
+    <% end %>
+  <% else %>
+  <div>
+    <br>
+    <h4>No appointment present for <%= @candidate.name %></h4>
+  </div>
+  <% end %>
+</div>

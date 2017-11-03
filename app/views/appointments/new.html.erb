@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="text-center bg-primary">Schedule appointment</h2>
+  <%= form_for @appointment, url: section_candidate_appointments_path do |f| %>
+    <%= error_messages_for(f.object) %>
+    <table class="table">
+      <tr>
+        <th>Name:</th>
+        <td><%= @candidate.name %></td>
+      </tr>
+      <tr>
+        <th>Section :</th>
+        <td><%= @candidate.section.section_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :datetime, "Select date & time :" %></th>
+        <td><%= f.datetime_select :datetime , start_hour: 00, end_hour: 23 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :venue, "Venue :" %></th>
+        <td><%= f.text_area :venue , size: '60x4', class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td><%=f.submit "Create Appointment", class: "btn btn-primary" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

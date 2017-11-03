@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ABC School</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+
+  <body class="bg-body">
+    <%= render 'layouts/header' %>
+    <% if !flash[:notice].blank? %>
+      <div class="text-center">
+        <h4 class="bg-green"><%= flash[:notice] %></h4>
+      </div>
+    <% end %>
+    <% if !flash[:danger].blank? %>
+      <div class="text-center">
+        <h4 class="bg-red text-danger"><%= flash[:danger] %></h4>
+      </div>
+    <% end %>
+    <div class="wrapper">
+      <%= yield %>
+      <div class="push">
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>
