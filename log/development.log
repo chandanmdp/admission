@@ -636,3 +636,1268 @@ Processing by PaymentsController#index as HTML
 Completed 200 OK in 181ms (Views: 175.1ms | ActiveRecord: 2.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-11-03 14:59:35 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.5ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.6ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (786.5ms)
+  Rendered layouts/_header.html.erb (9.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 1131ms (Views: 1080.9ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/payments/index" for 127.0.0.1 at 2017-11-03 15:00:07 +0530
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/index.html.erb within layouts/application
+  [1m[36mSection Load (0.7ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[36mCandidate Load (0.5ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 1]]
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 3]]
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 4]]
+  Rendered payments/index.html.erb within layouts/application (152.5ms)
+  Rendered layouts/_header.html.erb (6.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 318ms (Views: 291.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 15:00:10 +0530
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.7ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.6ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (16.1ms)
+  Rendered layouts/_header.html.erb (8.5ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 195ms (Views: 189.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/candidates/index" for 127.0.0.1 at 2017-11-03 15:00:12 +0530
+Processing by CandidatesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Under Process" or admission_status="Accepted" )[0m
+  [1m[36mCandidate Load (0.7ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE (admission_status="Under Process" or admission_status="Accepted" )[0m
+  [1m[36mSection Load (0.7ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Selected")[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Rejected")[0m
+  Rendered candidates/index.html.erb within layouts/application (56.3ms)
+  Rendered layouts/_header.html.erb (7.4ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 225ms (Views: 213.6ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/sections/2/candidates/2/manage" for 127.0.0.1 at 2017-11-03 15:00:17 +0530
+Processing by CandidatesController#manage as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.9ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  Rendering candidates/manage.html.erb within layouts/application
+  [1m[36mAppointment Load (0.6ms)[0m  [1m[34mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."candidate_id" = ? LIMIT ?[0m  [["candidate_id", 2], ["LIMIT", 1]]
+  Rendered application/_error_messages.html.erb (1.8ms)
+  Rendered candidates/manage.html.erb within layouts/application (88.8ms)
+  Rendered layouts/_header.html.erb (9.7ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 332ms (Views: 313.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/system/candidates/marksheets/000/000/002/ex_large/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:00:19 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/marksheets/000/000/002/ex_large/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PATCH "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:00:21 +0530
+Processing by CandidatesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SfYvPnCwcSY8P9zc40KeyBpzEh/jWbP5kyIGWpYhBCNgcm4fPbI6Guta4Pi5iKDGbNezMyOk/0GztD9BPE13lQ==", "candidate"=>{"admission_status"=>"Accepted", "rejection_reason"=>""}, "commit"=>"Save and Schedule appointment", "section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.7ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[33mUPDATE "candidates" SET "admission_status" = ?, "rejection_reason" = ?, "updated_at" = ? WHERE "candidates"."id" = ?[0m  [["admission_status", "Accepted"], ["rejection_reason", ""], ["updated_at", "2017-11-03 09:30:21.804537"], ["id", 2]]
+  [1m[35m (74.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/sections/2/candidates/2/appointments/new
+Completed 302 Found in 117ms (ActiveRecord: 78.6ms)
+
+
+Started GET "/sections/2/candidates/2/appointments/new" for 127.0.0.1 at 2017-11-03 15:00:21 +0530
+Processing by AppointmentsController#new as HTML
+  Parameters: {"section_id"=>"2", "candidate_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.7ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  Rendering appointments/new.html.erb within layouts/application
+  Rendered application/_error_messages.html.erb (1.2ms)
+  Rendered appointments/new.html.erb within layouts/application (18.4ms)
+  Rendered layouts/_header.html.erb (6.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 212ms (Views: 185.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/system/candidates/marksheets/000/000/002/ex_large/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:00:43 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/marksheets/000/000/002/ex_large/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-11-03 15:01:02 +0530
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.4ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.4ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_header.html.erb (10.8ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 192ms (Views: 186.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sections" for 127.0.0.1 at 2017-11-03 15:01:05 +0530
+Processing by SectionsController#index as HTML
+  Rendering sections/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "sections"[0m
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered sections/index.html.erb within layouts/application (18.6ms)
+  Rendered layouts/_header.html.erb (7.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 194ms (Views: 188.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/fees" for 127.0.0.1 at 2017-11-03 15:01:12 +0530
+Processing by FeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering fees/index.html.erb within layouts/application
+  [1m[36mSection Load (0.7ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 3]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 4]]
+  Rendered fees/index.html.erb within layouts/application (41.9ms)
+  Rendered layouts/_header.html.erb (6.2ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 234ms (Views: 215.2ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/candidates/index" for 127.0.0.1 at 2017-11-03 15:01:17 +0530
+Processing by CandidatesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Under Process" or admission_status="Accepted" )[0m
+  [1m[36mCandidate Load (0.8ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE (admission_status="Under Process" or admission_status="Accepted" )[0m
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAppointment Load (0.6ms)[0m  [1m[34mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."candidate_id" = ? LIMIT ?[0m  [["candidate_id", 2], ["LIMIT", 1]]
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSection Load (0.8ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Selected")[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Rejected")[0m
+  Rendered candidates/index.html.erb within layouts/application (34.0ms)
+  Rendered layouts/_header.html.erb (6.2ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 192ms (Views: 181.0ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/sections" for 127.0.0.1 at 2017-11-03 15:01:24 +0530
+Processing by SectionsController#index as HTML
+  Rendering sections/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "sections"[0m
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered sections/index.html.erb within layouts/application (10.8ms)
+  Rendered layouts/_header.html.erb (7.5ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 167ms (Views: 163.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/sections/2" for 127.0.0.1 at 2017-11-03 15:01:26 +0530
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sections/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[36mCandidate Load (0.8ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  Rendered sections/show.html.erb within layouts/application (10.4ms)
+  Rendered layouts/_header.html.erb (6.9ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 169ms (Views: 156.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:01:28 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_header.html.erb (7.6ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 194ms (Views: 180.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:01:28 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:01:51 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2/edit" for 127.0.0.1 at 2017-11-03 15:01:54 +0530
+Processing by CandidatesController#edit as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (1.0ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  Rendering candidates/edit.html.erb within layouts/application
+  Rendered application/_error_messages.html.erb (2.3ms)
+  Rendered candidates/_form.html.erb (30.1ms)
+  Rendered candidates/edit.html.erb within layouts/application (36.7ms)
+  Rendered layouts/_header.html.erb (6.3ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 218ms (Views: 203.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/sections/2" for 127.0.0.1 at 2017-11-03 15:06:34 +0530
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sections/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  Rendered sections/show.html.erb within layouts/application (11.1ms)
+  Rendered layouts/_header.html.erb (6.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 200ms (Views: 191.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/sections/1" for 127.0.0.1 at 2017-11-03 15:06:37 +0530
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.8ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sections/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 1]]
+  Rendered sections/show.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_header.html.erb (7.4ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 182ms (Views: 170.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sections/2" for 127.0.0.1 at 2017-11-03 15:06:59 +0530
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sections/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[36mCandidate Load (0.9ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  Rendered sections/show.html.erb within layouts/application (14.8ms)
+  Rendered layouts/_header.html.erb (7.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 216ms (Views: 205.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:07:08 +0530
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:08 +0530
+Processing by CandidatesController#show as HTML
+  
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  
+  [1m[36mCandidate Load (1.0ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_header.html.erb (10.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 525ms (Views: 487.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:09 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:07:19 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (6.1ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 167ms (Views: 153.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:20 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:07:26 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.7ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_header.html.erb (6.4ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 170ms (Views: 153.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:26 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:07:32 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.7ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_header.html.erb (6.3ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 195ms (Views: 178.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:33 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:35 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:07:45 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.8ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (6.2ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 162ms (Views: 145.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:07:46 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2" for 127.0.0.1 at 2017-11-03 15:10:42 +0530
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sections/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  Rendered sections/show.html.erb within layouts/application (11.8ms)
+  Rendered layouts/_header.html.erb (6.8ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 223ms (Views: 214.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:10:43 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:10:44 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:10:45 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.8ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (8.2ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 317ms (Views: 279.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:10:45 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:10:57 +0530
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (7.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 166ms (Views: 152.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/system/candidates/images/000/000/002/thumb/abhijeet.jpg?1509694607" for 127.0.0.1 at 2017-11-03 15:10:58 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/system/candidates/images/000/000/002/thumb/abhijeet.jpg"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "appointments"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (193.2ms)[0m  [1m[35mCREATE TABLE "appointments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "datetime" datetime, "venue" varchar, "candidate_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (104.2ms)[0m  [1m[35mCREATE  INDEX "index_appointments_on_candidate_id" ON "appointments" ("candidate_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "candidates"[0m
+  [1m[35m (104.7ms)[0m  [1m[35mCREATE TABLE "candidates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "father_name" varchar, "mother_name" varchar, "education" varchar, "contact_address" text, "parent_contact_number" varchar NOT NULL, "alternate_parent_contact_number" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "marksheet_file_name" varchar, "marksheet_content_type" varchar, "marksheet_file_size" integer, "marksheet_updated_at" datetime, "section_id" integer, "user_id" integer, "admission_status" varchar DEFAULT 'Under Process', "rejection_reason" text, "grade" varchar DEFAULT '')[0m
+  [1m[35m (77.5ms)[0m  [1m[35mCREATE  INDEX "index_candidates_on_section_id" ON "candidates" ("section_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_candidates_on_section_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_candidates_on_section_id' AND type='index'
+[0m
+  [1m[35m (98.2ms)[0m  [1m[35mCREATE  INDEX "index_candidates_on_user_id" ON "candidates" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "eligibilities"[0m
+  [1m[35m (166.2ms)[0m  [1m[35mCREATE TABLE "eligibilities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "criteria" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "fees"[0m
+  [1m[35m (99.9ms)[0m  [1m[35mCREATE TABLE "fees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fee_name" varchar, "fee_mode" varchar, "fee_amount" integer, "section_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (120.8ms)[0m  [1m[35mCREATE  INDEX "index_fees_on_section_id" ON "fees" ("section_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "notices"[0m
+  [1m[35m (100.6ms)[0m  [1m[35mCREATE TABLE "notices" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "notice_title" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "payments"[0m
+  [1m[35m (96.3ms)[0m  [1m[35mCREATE TABLE "payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "payment_name" varchar, "amount" integer, "payment_mode" varchar, "payment_image_file_name" varchar, "payment_image_content_type" varchar, "payment_image_file_size" integer, "payment_image_updated_at" datetime, "payment_status" varchar DEFAULT '', "candidate_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (101.0ms)[0m  [1m[35mCREATE  INDEX "index_payments_on_candidate_id" ON "payments" ("candidate_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "sections"[0m
+  [1m[35m (83.5ms)[0m  [1m[35mCREATE TABLE "sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "section_name" varchar, "section_grades" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (110.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar DEFAULT '' NOT NULL, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "admin" boolean DEFAULT 'f')[0m
+  [1m[35m (121.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (71.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171029061650)[0m
+  [1m[35m (63.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170909064759),
+(20170908103424),
+(20170906093717),
+(20170906154906),
+(20170920122730),
+(20170909095217),
+(20170904122353),
+(20170914055451),
+(20170921151823),
+(20170907060045),
+(20170902164328),
+(20170910140243),
+(20170920182846);
+
+[0m
+  [1m[35m (128.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-03 09:41:19.648531"], ["updated_at", "2017-11-03 09:41:19.648531"]]
+  [1m[35m (65.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "appointments"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (102.7ms)[0m  [1m[35mCREATE TABLE "appointments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "datetime" datetime, "venue" varchar, "candidate_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (98.8ms)[0m  [1m[35mCREATE  INDEX "index_appointments_on_candidate_id" ON "appointments" ("candidate_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "candidates"[0m
+  [1m[35m (108.0ms)[0m  [1m[35mCREATE TABLE "candidates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "father_name" varchar, "mother_name" varchar, "education" varchar, "contact_address" text, "parent_contact_number" varchar NOT NULL, "alternate_parent_contact_number" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "marksheet_file_name" varchar, "marksheet_content_type" varchar, "marksheet_file_size" integer, "marksheet_updated_at" datetime, "section_id" integer, "user_id" integer, "admission_status" varchar DEFAULT 'Under Process', "rejection_reason" text, "grade" varchar DEFAULT '')[0m
+  [1m[35m (89.0ms)[0m  [1m[35mCREATE  INDEX "index_candidates_on_section_id" ON "candidates" ("section_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_candidates_on_section_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_candidates_on_section_id' AND type='index'
+[0m
+  [1m[35m (130.6ms)[0m  [1m[35mCREATE  INDEX "index_candidates_on_user_id" ON "candidates" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "eligibilities"[0m
+  [1m[35m (109.5ms)[0m  [1m[35mCREATE TABLE "eligibilities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "criteria" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "fees"[0m
+  [1m[35m (100.4ms)[0m  [1m[35mCREATE TABLE "fees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fee_name" varchar, "fee_mode" varchar, "fee_amount" integer, "section_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (110.9ms)[0m  [1m[35mCREATE  INDEX "index_fees_on_section_id" ON "fees" ("section_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "notices"[0m
+  [1m[35m (121.0ms)[0m  [1m[35mCREATE TABLE "notices" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "notice_title" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "payments"[0m
+  [1m[35m (119.5ms)[0m  [1m[35mCREATE TABLE "payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "payment_name" varchar, "amount" integer, "payment_mode" varchar, "payment_image_file_name" varchar, "payment_image_content_type" varchar, "payment_image_file_size" integer, "payment_image_updated_at" datetime, "payment_status" varchar DEFAULT '', "candidate_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (98.2ms)[0m  [1m[35mCREATE  INDEX "index_payments_on_candidate_id" ON "payments" ("candidate_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "sections"[0m
+  [1m[35m (111.0ms)[0m  [1m[35mCREATE TABLE "sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "section_name" varchar, "section_grades" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (118.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar DEFAULT '' NOT NULL, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "admin" boolean DEFAULT 'f')[0m
+  [1m[35m (100.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (82.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171029061650)[0m
+  [1m[35m (82.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170909064759),
+(20170908103424),
+(20170906093717),
+(20170906154906),
+(20170920122730),
+(20170909095217),
+(20170904122353),
+(20170914055451),
+(20170921151823),
+(20170907060045),
+(20170902164328),
+(20170910140243),
+(20170920182846);
+
+[0m
+  [1m[35m (109.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-03 09:41:21.570099"], ["updated_at", "2017-11-03 09:41:21.570099"]]
+  [1m[35m (85.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "molay@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "admin") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Molay kumar"], ["email", "molay@gmail.com"], ["password_digest", "$2a$10$c6DsCK/jQckcFoMZIcFkEua8Xfcsjayo2YFs8JCepvzY9/dSaTcmy"], ["created_at", "2017-11-03 09:41:21.974543"], ["updated_at", "2017-11-03 09:41:21.974543"], ["admin", "t"]]
+  [1m[35m (91.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "deepak@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Deepak kumar"], ["email", "deepak@gmail.com"], ["password_digest", "$2a$10$YBjmhNIioueXoMcdpootae6KFJLbxRMsNkEcFR2fAIZODFNs33IFC"], ["created_at", "2017-11-03 09:41:22.326811"], ["updated_at", "2017-11-03 09:41:22.326811"]]
+  [1m[35m (93.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "abhijeet@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Abhijeet kumar"], ["email", "abhijeet@gmail.com"], ["password_digest", "$2a$10$e.vUzFe0HNuE5C4a8ToIgOI1vFrGgUDPR.VOQlcbxFBIbG1PaAnAq"], ["created_at", "2017-11-03 09:41:22.681160"], ["updated_at", "2017-11-03 09:41:22.681160"]]
+  [1m[35m (90.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "ankita@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ankita kashyap"], ["email", "ankita@gmail.com"], ["password_digest", "$2a$10$.K/MTpA1uU7GHcHTPfGJX.FHTLHQqNDmdOmqumImuti1boz6UlXNS"], ["created_at", "2017-11-03 09:41:23.032640"], ["updated_at", "2017-11-03 09:41:23.032640"]]
+  [1m[35m (70.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "arnab@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Arnab saha"], ["email", "arnab@gmail.com"], ["password_digest", "$2a$10$wkCG5ZqCBKWlHM4dMtGiYOnOA50v/k3xhFgPfOKTFl0apfaeyqtJm"], ["created_at", "2017-11-03 09:41:23.363761"], ["updated_at", "2017-11-03 09:41:23.363761"]]
+  [1m[35m (83.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "akash@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Akash viswash"], ["email", "akash@gmail.com"], ["password_digest", "$2a$10$JxU4Rp0uZEbJTsbTNo486eDKqqzXZHEOT92jALvhRDDL2hDylWTXi"], ["created_at", "2017-11-03 09:41:23.708989"], ["updated_at", "2017-11-03 09:41:23.708989"]]
+  [1m[35m (106.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "nandan@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Nandan kumar"], ["email", "nandan@gmail.com"], ["password_digest", "$2a$10$3RVmT8MwUv/QPqZ36ftuc.lJ5ZNF4CVUiKEzqGvFhoCS/huZBp9oS"], ["created_at", "2017-11-03 09:41:24.076180"], ["updated_at", "2017-11-03 09:41:24.076180"]]
+  [1m[35m (119.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "raman@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Raman raghav"], ["email", "raman@gmail.com"], ["password_digest", "$2a$10$cxkzbCAh.azG2B.TfYKjreEgQGcKE8OKIrc/AjfHnSLwC0VDmyzr2"], ["created_at", "2017-11-03 09:41:24.457687"], ["updated_at", "2017-11-03 09:41:24.457687"]]
+  [1m[35m (84.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "davinder@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Davinder singh virdi"], ["email", "davinder@gmail.com"], ["password_digest", "$2a$10$vP4mIIHiQRc5MF8Q.MYKqO/wmsO7B9ftazrMjzETRXjUxa1kOl.D2"], ["created_at", "2017-11-03 09:41:24.802111"], ["updated_at", "2017-11-03 09:41:24.802111"]]
+  [1m[35m (94.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "sections" WHERE "sections"."section_name" = ? LIMIT ?[0m  [["section_name", "Kindergarten Section"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "sections" ("section_name", "section_grades", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["section_name", "Kindergarten Section"], ["section_grades", "Kindergarten"], ["created_at", "2017-11-03 09:41:24.938143"], ["updated_at", "2017-11-03 09:41:24.938143"]]
+  [1m[35m (79.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "sections" WHERE "sections"."section_name" = ? LIMIT ?[0m  [["section_name", "Junior Section"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("section_name", "section_grades", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["section_name", "Junior Section"], ["section_grades", "1st,2nd,3rd,4th"], ["created_at", "2017-11-03 09:41:25.027532"], ["updated_at", "2017-11-03 09:41:25.027532"]]
+  [1m[35m (78.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "sections" WHERE "sections"."section_name" = ? LIMIT ?[0m  [["section_name", "Boy's Section"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("section_name", "section_grades", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["section_name", "Boy's Section"], ["section_grades", "5th,6th,7th,8th,9th,10th,11th,12th"], ["created_at", "2017-11-03 09:41:25.113424"], ["updated_at", "2017-11-03 09:41:25.113424"]]
+  [1m[35m (87.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "sections" WHERE "sections"."section_name" = ? LIMIT ?[0m  [["section_name", "Girl's Section"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "sections" ("section_name", "section_grades", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["section_name", "Girl's Section"], ["section_grades", "5th,6th,7th,8th,9th,10th,11th,12th"], ["created_at", "2017-11-03 09:41:25.208347"], ["updated_at", "2017-11-03 09:41:25.208347"]]
+  [1m[35m (89.4ms)[0m  [1m[36mcommit transaction[0m
+Command :: file -b --mime '/tmp/498b5924adc469aa7b660f457e0fc7e520171103-6458-so0lt2.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/498b5924adc469aa7b660f457e0fc7e520171103-6458-7dlnkn.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/498b5924adc469aa7b660f457e0fc7e520171103-6458-7dlnkn.jpg[0]'
+Command :: convert '/tmp/498b5924adc469aa7b660f457e0fc7e520171103-6458-7dlnkn.jpg[0]' -auto-orient -resize "100x" -crop "100x100+0+21" +repage '/tmp/33bfc57eab157132c66e3b82ae6fbdfa20171103-6458-14enjp7'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/498b5924adc469aa7b660f457e0fc7e520171103-6458-qu2285.jpg'
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "candidates" ("name", "father_name", "mother_name", "education", "contact_address", "parent_contact_number", "alternate_parent_contact_number", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "section_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Deepak kumar"], ["father_name", "Pappu kumar"], ["mother_name", "Banishava Devi"], ["education", "Not Applicable"], ["contact_address", "Peevees Mirage, Nilambur P.O., Malappuram District, Kerala. 679329"], ["parent_contact_number", "9865252558"], ["alternate_parent_contact_number", "8695326586"], ["created_at", "2017-11-03 09:41:25.569407"], ["updated_at", "2017-11-03 09:41:25.569407"], ["image_file_name", "deepak.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 52034], ["image_updated_at", "2017-11-03 09:41:25.395575"], ["section_id", 1], ["user_id", 2]]
+  [1m[35m (48.1ms)[0m  [1m[36mcommit transaction[0m
+Command :: file -b --mime '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-kjcvag.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-vw5y4t.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-vw5y4t.jpg[0]'
+Command :: convert '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-vw5y4t.jpg[0]' -auto-orient -resize "100x" -crop "100x100+0+14" +repage '/tmp/0a067efc496c13d8a4406f7790d352d620171103-6458-smzj4r'
+Command :: file -b --mime '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-rpcc7u.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1qstvjx.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1qstvjx.jpg[0]'
+Command :: convert '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1qstvjx.jpg[0]' -auto-orient -resize "1000x1000>" '/tmp/3cc27fca3ea8d14e1179c8807126a3b620171103-6458-1iic444'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1qstvjx.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1qstvjx.jpg[0]'
+Command :: convert '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1qstvjx.jpg[0]' -auto-orient -resize "300x300>" '/tmp/3cc27fca3ea8d14e1179c8807126a3b620171103-6458-ymatum'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-17kva.jpg'
+Command :: file -b --mime '/tmp/57701f4c796f3f81a49bb5f5f0e957b620171103-6458-1bffb48.jpg'
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "candidates" ("name", "father_name", "mother_name", "education", "contact_address", "parent_contact_number", "alternate_parent_contact_number", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "marksheet_file_name", "marksheet_content_type", "marksheet_file_size", "marksheet_updated_at", "section_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abhijeet kumar"], ["father_name", "Gunjan kumar"], ["mother_name", "Preeti Devi"], ["education", "1st"], ["contact_address", "Mazhuvannoor House, P.O. Melampara, Bharananganam, Kottayam Dt., Kerala. 686578"], ["parent_contact_number", "9874523318"], ["alternate_parent_contact_number", "8652369856"], ["created_at", "2017-11-03 09:41:26.342664"], ["updated_at", "2017-11-03 09:41:26.342664"], ["image_file_name", "abhijeet.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184853], ["image_updated_at", "2017-11-03 09:41:25.658251"], ["marksheet_file_name", "abhijeet.jpg"], ["marksheet_content_type", "image/jpeg"], ["marksheet_file_size", 175562], ["marksheet_updated_at", "2017-11-03 09:41:25.784288"], ["section_id", 2], ["user_id", 3]]
+  [1m[35m (49.9ms)[0m  [1m[36mcommit transaction[0m
+Command :: file -b --mime '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-133d5rg.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-175f8mc.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-175f8mc.jpg[0]'
+Command :: convert '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-175f8mc.jpg[0]' -auto-orient -resize "100x" -crop "100x100+0+3" +repage '/tmp/0b9a1debde339d9a54fd0866fdd8cbe020171103-6458-ettxbi'
+Command :: file -b --mime '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-1845no8.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-zkjxm0.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-zkjxm0.jpg[0]'
+Command :: convert '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-zkjxm0.jpg[0]' -auto-orient -resize "1000x1000>" '/tmp/78db059b4efd706fd8be4fb04593dc3320171103-6458-1ejzybf'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-zkjxm0.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-zkjxm0.jpg[0]'
+Command :: convert '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-zkjxm0.jpg[0]' -auto-orient -resize "300x300>" '/tmp/78db059b4efd706fd8be4fb04593dc3320171103-6458-1l71ruj'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-1iqnuki.jpg'
+Command :: file -b --mime '/tmp/de5b5bf65ba66517f9b70b1443d2102d20171103-6458-shcojv.jpg'
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "candidates" ("name", "father_name", "mother_name", "education", "contact_address", "parent_contact_number", "alternate_parent_contact_number", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "marksheet_file_name", "marksheet_content_type", "marksheet_file_size", "marksheet_updated_at", "section_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ankita Kashyap"], ["father_name", "Raghu kumar kashyap"], ["mother_name", "Divya Kashyap"], ["education", "9th"], ["contact_address", "At-Chanchala Niwas, Ward No-16, PO-Bargarh, Dist.-Bargarh, Odisha"], ["parent_contact_number", "8456321458"], ["alternate_parent_contact_number", "8698695362"], ["created_at", "2017-11-03 09:41:26.780301"], ["updated_at", "2017-11-03 09:41:26.780301"], ["image_file_name", "ankita.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 98445], ["image_updated_at", "2017-11-03 09:41:26.431545"], ["marksheet_file_name", "ankita.jpg"], ["marksheet_content_type", "image/jpeg"], ["marksheet_file_size", 68366], ["marksheet_updated_at", "2017-11-03 09:41:26.566907"], ["section_id", 4], ["user_id", 4]]
+  [1m[35m (66.2ms)[0m  [1m[36mcommit transaction[0m
+Command :: file -b --mime '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-jbagei.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-176oupq.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-176oupq.jpg[0]'
+Command :: convert '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-176oupq.jpg[0]' -auto-orient -resize "100x" -crop "100x100+0+13" +repage '/tmp/02f9523734d5374e658bacbe7040ca5b20171103-6458-b50bgn'
+Command :: file -b --mime '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-xhgtvv.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-2fewpc.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-2fewpc.jpg[0]'
+Command :: convert '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-2fewpc.jpg[0]' -auto-orient -resize "1000x1000>" '/tmp/0d24800f228060bb811ccb4dfbbd9e9720171103-6458-nge7z'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-2fewpc.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-2fewpc.jpg[0]'
+Command :: convert '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-2fewpc.jpg[0]' -auto-orient -resize "300x300>" '/tmp/0d24800f228060bb811ccb4dfbbd9e9720171103-6458-8reann'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-1n009b0.jpg'
+Command :: file -b --mime '/tmp/bf9ea75bd1d06d64c834e63a7e1ef0cf20171103-6458-11qez7h.jpg'
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "candidates" ("name", "father_name", "mother_name", "education", "contact_address", "parent_contact_number", "alternate_parent_contact_number", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "marksheet_file_name", "marksheet_content_type", "marksheet_file_size", "marksheet_updated_at", "section_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arnab saha"], ["father_name", "Raghu saha"], ["mother_name", "Disha saha"], ["education", "10th"], ["contact_address", "C/O Thermax Limited, Thermax House, 14, Mumbai-Pune Road, WAKDEWADI, Pune, Maharashtra. 411003"], ["parent_contact_number", "9953421458"], ["alternate_parent_contact_number", "8998623362"], ["created_at", "2017-11-03 09:41:27.229809"], ["updated_at", "2017-11-03 09:41:27.229809"], ["image_file_name", "arnab.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 77846], ["image_updated_at", "2017-11-03 09:41:26.873429"], ["marksheet_file_name", "arnab.jpg"], ["marksheet_content_type", "image/jpeg"], ["marksheet_file_size", 62140], ["marksheet_updated_at", "2017-11-03 09:41:27.012317"], ["section_id", 3], ["user_id", 5]]
+  [1m[35m (83.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notices" ("notice_title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["notice_title", "Admission Notice for Kindergarten section for the Year 2018-2019"], ["content", "Approximately\n              225 candidates will be selected for admission to Kindergarten. Application Forms can be downloaded\n              from the school web site . The Application Forms will be available during September. Exact dates of\n              availability will be notified through a notice on the school website. Receiving the Application Form\n              or going through the admission procedure does not guarantee admission."], ["created_at", "2017-11-03 09:41:27.355377"], ["updated_at", "2017-11-03 09:41:27.355377"]]
+  [1m[35m (63.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "eligibilities" ("title", "criteria", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Admission to Class X"], ["criteria", "As the syllabus prescribed at Secondary level is of\n                  two years integrated course, no admission shall be taken in Class X directly. Provided further\n                  that admission to Class X in a school shall be open only to such a student who:(a) has completed\n                  a regular course of study for class IX, and (b) has passed class IX examination from an\n                  institution affiliated to this Board.(c) A student who has completed a regular course of study\n                  for Class IX and has passed Class IX examination from an institution recognised by/affiliated\n                  to any recognised Board in India, other than this Board, can be admitted to a school only on the\n                  transfer of the parent(s) or shifting of their families from one place to another, after procuring\n                  from the students the mark sheet and the Transfer Certificate duly countersigned by the Educational\n                  Authorities of the Board concerned. In case of such admissions the schools would obtain post facto\n                  approval of the Board within one month of admission of the student."], ["created_at", "2017-11-03 09:41:27.451783"], ["updated_at", "2017-11-03 09:41:27.451783"]]
+  [1m[35m (92.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/sections/2/candidates/2" for 127.0.0.1 at 2017-11-03 15:11:42 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CandidatesController#show as HTML
+  Parameters: {"section_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.7ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCandidate Load (0.5ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ? AND "candidates"."id" = ? LIMIT ?[0m  [["section_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering candidates/show.html.erb within layouts/application
+  Rendered candidates/show.html.erb within layouts/application (6.8ms)
+  Rendered layouts/_header.html.erb (7.2ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 1011ms (Views: 784.8ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 15:11:57 +0530
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.7ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.5ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (46.9ms)
+  Rendered layouts/_header.html.erb (9.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 205ms (Views: 185.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/fees" for 127.0.0.1 at 2017-11-03 15:12:03 +0530
+Processing by FeesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering fees/index.html.erb within layouts/application
+  [1m[36mSection Load (0.7ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 4]]
+  Rendered fees/index.html.erb within layouts/application (30.0ms)
+  Rendered layouts/_header.html.erb (7.2ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 216ms (Views: 199.6ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/candidates/index" for 127.0.0.1 at 2017-11-03 15:12:08 +0530
+Processing by CandidatesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Under Process" or admission_status="Accepted" )[0m
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE (admission_status="Under Process" or admission_status="Accepted" )[0m
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT  "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Selected")[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE (admission_status="Rejected")[0m
+  Rendered candidates/index.html.erb within layouts/application (43.6ms)
+  Rendered layouts/_header.html.erb (8.3ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 217ms (Views: 208.6ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/fees" for 127.0.0.1 at 2017-11-03 15:12:43 +0530
+Processing by FeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering fees/index.html.erb within layouts/application
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "fees" WHERE "fees"."section_id" = ?[0m  [["section_id", 4]]
+  Rendered fees/index.html.erb within layouts/application (24.8ms)
+  Rendered layouts/_header.html.erb (11.8ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 209ms (Views: 199.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/candidates/select" for 127.0.0.1 at 2017-11-03 15:12:49 +0530
+Processing by CandidatesController#select as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering candidates/select.html.erb within layouts/application
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  Rendered candidates/select.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_header.html.erb (7.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 182ms (Views: 177.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/notices" for 127.0.0.1 at 2017-11-03 15:12:55 +0530
+Processing by NoticesController#index as HTML
+  Rendering notices/index.html.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "notices"[0m
+  [1m[36mNotice Load (0.6ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered notices/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_header.html.erb (9.7ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 275ms (Views: 268.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 15:13:08 +0530
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.4ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.5ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (11.5ms)
+  Rendered layouts/_header.html.erb (6.8ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 179ms (Views: 175.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/appointments/index" for 127.0.0.1 at 2017-11-03 15:13:41 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "appointments"[0m
+  Rendered appointments/index.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_header.html.erb (6.9ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 172ms (Views: 159.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/payments/index" for 127.0.0.1 at 2017-11-03 15:13:52 +0530
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/index.html.erb within layouts/application
+  [1m[36mSection Load (1.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[36mCandidate Load (1.0ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 1]]
+  [1m[36mCandidate Load (0.4ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 2]]
+  [1m[36mCandidate Load (0.4ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 3]]
+  [1m[36mCandidate Load (0.5ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."section_id" = ?[0m  [["section_id", 4]]
+  Rendered payments/index.html.erb within layouts/application (32.9ms)
+  Rendered layouts/_header.html.erb (8.0ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 249ms (Views: 239.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 15:13:56 +0530
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.5ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.4ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (13.0ms)
+  Rendered layouts/_header.html.erb (6.6ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 194ms (Views: 189.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/appointments/index" for 127.0.0.1 at 2017-11-03 15:14:05 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "appointments"[0m
+  Rendered appointments/index.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_header.html.erb (6.6ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 167ms (Views: 162.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 15:14:07 +0530
+Processing by AccessController#menu as HTML
+  Rendering access/menu.html.erb within layouts/application
+  [1m[36mNotice Load (0.5ms)[0m  [1m[34mSELECT "notices".* FROM "notices"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEligibility Load (0.4ms)[0m  [1m[34mSELECT "eligibilities".* FROM "eligibilities"[0m
+  Rendered access/menu.html.erb within layouts/application (12.4ms)
+  Rendered layouts/_header.html.erb (7.3ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 187ms (Views: 182.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-11-03 15:16:21 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  Rendered users/index.html.erb within layouts/application (29.6ms)
+  Rendered layouts/_header.html.erb (6.7ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 188ms (Views: 180.0ms | ActiveRecord: 1.6ms)
+
+
